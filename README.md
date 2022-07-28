@@ -7,5 +7,6 @@ Blackjack demo in Javascript (ReactJs + umiJs)
 
    `git clone git@github.com:diyar94/blackjack-demo.git`
  
-2.  Install dependencies locally with `yarn install` (if you use `npm`, run `npm install`)
+2.  Install dependencies with `yarn install` (if you use `npm`, run `npm install`)
+
 3.  Start local frontend with `umi dev`
