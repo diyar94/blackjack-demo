@@ -26,5 +26,4 @@ const GameCard = ({suite, value, open = false,}) => <div className={'game-card'}
 	</div>
 </div>;
 
-
 export default GameCard;

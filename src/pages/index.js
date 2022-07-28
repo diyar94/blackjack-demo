@@ -1,12 +1,12 @@
-import DeskStats from "../components/DeskStats";
-import GameDesk from "../components/GameDesk";
+import DeskStats from "@/components/DeskStats";
+import GameDesk from "@/components/GameDesk";
 import {useRequest} from "ahooks";
-import PlaceBet from "../components/PlaceBet";
+import PlaceBet from "@/components/PlaceBet";
 import {useEffect, useState} from "react";
 import {apiPost, endpoints} from "../../api";
-import DeskActions from "../components/DeskActions";
-import WelcomeBoard from "../components/WelcomeBoard";
-import {availableBetOptions} from "../utils";
+import DeskActions from "@/components/DeskActions";
+import WelcomeBoard from "@/components/WelcomeBoard";
+import {availableBetOptions} from "@/utils";
 
 const page = () => {
 	const [betValue, setBetValue] = useState(0);
@@ -79,7 +79,7 @@ const page = () => {
 				setPlayerCardsState([...playerCardsState, playerCard]);
 				setNextRound(true);
 				if (roundEnded && currentBalance === 0) {
-					alert('roundended on hit');
+					alert('round ended on hit action');
 					setGameOver(true);
 
 				}
@@ -91,12 +91,14 @@ const page = () => {
 		if (currentBalance <= 0) {
 			setNextRound(false);
 			localStorage.clear();
+			// setGameOver(true);
+
 		}
 	}, [currentBalance]);
 
 	const onPlaceBetClick = async () => {
 		if (Number(betValue) > Number(currentBalance)) {
-
+			alert('insufficient funds, choose another option')
 		} else {
 			setBetPlaced(true);
 			const dealRequestBody = {
@@ -112,7 +114,6 @@ const page = () => {
 	const onSelectChange = e => {
 		const betVal = e.target.value;
 		setBetValue(betVal);
-
 	}
 
 	//hit button click handler
@@ -213,6 +214,7 @@ const page = () => {
 				<button className={'desk-actions desk-button'} onClick={() => {
 					localStorage.clear();
 					location.reload();
+					setGameOver(false)
 
 				}}>New game
 				</button>
